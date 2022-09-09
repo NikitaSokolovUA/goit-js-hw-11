@@ -39,7 +39,7 @@ export default class PicturesAPIService {
                 
                 this.totalHits = data.totalHits;
                 this.hits += data.hits.length
-                this.compareHits = this.hits === this.totalHits
+                this.compareHits = this.hits >= this.totalHits
                 return data.hits
             })
     }

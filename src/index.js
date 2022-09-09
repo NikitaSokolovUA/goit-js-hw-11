@@ -72,6 +72,7 @@ async function makeFetchAndTamplate() {
         picturesAPIService.incrementPage()
         gallery.refresh()
 
+        console.log(picturesAPIService);
         
         if (!picturesAPIService.booleanHits()) {
             const lastCard = document.querySelector('.photo-card:last-child')
