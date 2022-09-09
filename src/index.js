@@ -13,7 +13,6 @@ const refs = {
 
 const picturesAPIService = new PicturesAPIService();
 const InfiniteObserve = new IntersectionObserver(([entry], observer) => {
-    console.log(entry);
     if (entry.isIntersecting) {
         observer.unobserve(entry.target)
         makeFetchAndTamplate()
