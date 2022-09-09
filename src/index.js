@@ -50,7 +50,7 @@ function onSubmitFetchPictures(e) {
 
 async function makeFetchAndTamplate() {
     try {
-        await picturesAPIService.findSomePictures().then((pictures) => {
+            await picturesAPIService.findSomePictures().then((pictures) => {
             const isFirstPage = picturesAPIService.page === 1;
 
             if (pictures.length === 0) {
@@ -60,7 +60,11 @@ async function makeFetchAndTamplate() {
 
             if (isFirstPage) {
                 Notify.success(`Hooray! We found ${picturesAPIService.totalHits} images.`)
-            } 
+                } 
+                
+            if (picturesAPIService.booleanHits()) {
+                Notify.info(`We're sorry, but you've reached the end of search results.`)
+                }
 
             renderTamplateOfPic(pictures) 
             if (!isFirstPage) {
@@ -69,9 +73,9 @@ async function makeFetchAndTamplate() {
                     
         })
 
+
         picturesAPIService.incrementPage()
         gallery.refresh()
-
         
         if (!picturesAPIService.booleanHits()) {
             const lastCard = document.querySelector('.photo-card:last-child')
@@ -81,9 +85,7 @@ async function makeFetchAndTamplate() {
             }
         }
         
-        if (picturesAPIService.booleanHits()) {
-            Notify.info(`We're sorry, but you've reached the end of search results.`)
-        }
+        
         
         
     } catch (error) {
