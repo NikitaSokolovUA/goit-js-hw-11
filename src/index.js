@@ -82,7 +82,7 @@ async function makeFetchAndTamplate() {
             }
         }
         
-        if (findPicture.booleanHits()) {
+        if (picturesAPIService.booleanHits()) {
             Notify.info(`We're sorry, but you've reached the end of search results.`)
         }
         
